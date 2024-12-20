@@ -16,9 +16,8 @@
         }
 
         .container {
-            max-width: 500px;
+            max-width: 900px;
             margin: 100px auto; /* Moved an inch down */
-             margin-top: 2in;
             background: rgba(255, 255, 255, 0.9); /* Transparent background for readability */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             border-radius: 10px;
@@ -26,7 +25,7 @@
         }
 
         .header {
-            background:  #780606;
+            background: #0056a3;
             color: white;
             text-align: center;
             padding: 20px;
@@ -47,7 +46,7 @@
         }
 
         .footer {
-            background:  #780606;
+            background: #0056a3;
             color: white;
             text-align: center;
             padding: 10px;
@@ -60,7 +59,7 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="birthdayContainer">
         <div class="header">
             <h1>Happy Birthday!</h1>
         </div>
@@ -83,20 +82,25 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
     <script>
-        function triggerConfetti() {
-            // Confetti burst configuration
+        window.onload = function() {
+            // Get container position
+            const container = document.getElementById('birthdayContainer');
+            const rect = container.getBoundingClientRect();
+
+            // Calculate center position of the container
+            const containerCenterX = rect.left + rect.width / 2;
+            const containerTopY = rect.top + window.scrollY;
+
+            // Trigger confetti near the container
             confetti({
                 particleCount: 100,
-                spread: 70,
+                spread: 90,
                 origin: {
-                    x: Math.random(), // Random horizontal location
-                    y: Math.random() * 0.5 // Top half of the page
+                    x: containerCenterX / window.innerWidth,
+                    y: (containerTopY + 50) / window.innerHeight
                 }
             });
-        }
-
-        // Trigger confetti effect randomly every 5 seconds
-        setInterval(triggerConfetti, 5000);
+        };
     </script>
 </body>
 </html>

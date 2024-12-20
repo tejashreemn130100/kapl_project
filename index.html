@@ -16,10 +16,9 @@
         }
 
         .container {
-            max-width:500px;
-            margin: 50px auto;
-            margin-top: 1in;
-            background: rgba(255, 255, 255, 0.9);
+            max-width: 900px;
+            margin: 100px auto; /* Moved an inch down */
+            background: rgba(255, 255, 255, 0.9); /* Transparent background for readability */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             border-radius: 10px;
             overflow: hidden;
@@ -52,11 +51,6 @@
             text-align: center;
             padding: 10px;
             font-size: 0.9em;
-        }
-
-        .footer a {
-            color: white;
-            text-decoration: underline;
         }
 
         .footer span {
@@ -92,7 +86,7 @@
             <p><strong>KAPL Team</strong></p>
         </div>
         <div class="footer">
-            <p>&copy; <a href="https://www.kaplindia.com/" target="_blank" style="color: white; text-decoration: underline;"><span>KAPL Team</span></a> | Wishing You Joy and Success Always!</p>
+            <p>&copy; <a href="https://www.kaplindia.com/" target="_blank" style="color: white; text-decoration: underline;">KAPL Team</a> | Wishing You Joy and Success Always!</p>
         </div>
     </div>
 
@@ -125,7 +119,7 @@
             }, 5000);
         }
 
-        // Trigger confetti effect randomly
+        // Trigger confetti effect randomly every 7 seconds
         setInterval(createConfetti, 7000);
     </script>
 </body>

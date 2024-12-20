@@ -16,16 +16,17 @@
         }
 
         .container {
-            max-width: 900px;
-            margin: 100px auto; /* Moved an inch down */
-            background: rgba(255, 255, 255, 0.9); /* Transparent background for readability */
+            max-width: 500px;
+            margin: 100px auto;
+            margin-top: 2in;
+            background: rgba(255, 255, 255, 0.9);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             border-radius: 10px;
             overflow: hidden;
         }
 
         .header {
-            background: #0056a3;
+            background: #780606;
             color: white;
             text-align: center;
             padding: 20px;
@@ -46,7 +47,7 @@
         }
 
         .footer {
-            background: #0056a3;
+            background: #780606;
             color: white;
             text-align: center;
             padding: 10px;
@@ -78,29 +79,50 @@
         </div>
     </div>
 
+    <!-- Happy Birthday Song -->
+    <audio id="birthdaySong" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" preload="auto"></audio>
+
     <!-- Include Canvas Confetti Library -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
     <script>
         window.onload = function() {
+            // Play the Happy Birthday song
+            const birthdaySong = document.getElementById('birthdaySong');
+            birthdaySong.play();
+
             // Get container position
             const container = document.getElementById('birthdayContainer');
             const rect = container.getBoundingClientRect();
 
-            // Calculate center position of the container
+            // Calculate position near the container
             const containerCenterX = rect.left + rect.width / 2;
             const containerTopY = rect.top + window.scrollY;
 
             // Trigger confetti near the container
             confetti({
                 particleCount: 100,
-                spread: 90,
+                spread: 70,
                 origin: {
                     x: containerCenterX / window.innerWidth,
                     y: (containerTopY + 50) / window.innerHeight
                 }
             });
         };
+
+        // Random confetti bursts every 5 seconds
+        function triggerRandomConfetti() {
+            confetti({
+                particleCount: 100,
+                spread: 90,
+                origin: {
+                    x: Math.random(),
+                    y: Math.random() * 0.5
+                }
+            });
+        }
+
+        setInterval(triggerRandomConfetti, 5000);
     </script>
 </body>
 </html>

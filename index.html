@@ -10,23 +10,23 @@
             margin: 0;
             padding: 0;
             background: url('factory.jpg') no-repeat center center fixed;
-            background-size: cover; /* Ensures the image covers the entire background */
+            background-size: cover;
             background-color: #f3f4f6;
             color: #333;
         }
 
         .container {
-            max-width:500px;
+            max-width: 900px;
             margin: 50px auto;
-            margin-top: 2in;
-            background: rgba(255, 255, 255, 0.9); /* Transparent background for readability */
+            margin-top: 1in;
+            background: rgba(255, 255, 255, 0.9);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             border-radius: 10px;
             overflow: hidden;
         }
 
         .header {
-            background: #780606;
+            background: #0056a3;
             color: white;
             text-align: center;
             padding: 20px;
@@ -47,15 +47,32 @@
         }
 
         .footer {
-            background: #780606;
+            background: #0056a3;
             color: white;
             text-align: center;
             padding: 10px;
             font-size: 0.9em;
         }
 
+        .footer a {
+            color: white;
+            text-decoration: underline;
+        }
+
         .footer span {
             font-weight: bold;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
@@ -75,8 +92,41 @@
             <p><strong>KAPL Team</strong></p>
         </div>
         <div class="footer">
-    <p>&copy; <a href="https://www.kaplindia.com/" target="_blank" style="color: white; text-decoration: underline;"><span>KAPL Team</span></a> | Wishing You Joy and Success Always!</p>
-</div>
+            <p>&copy; <a href="https://www.kaplindia.com/" target="_blank" style="color: white; text-decoration: underline;"><span>KAPL Team</span></a> | Wishing You Joy and Success Always!</p>
+        </div>
     </div>
+
+    <script>
+        function createConfetti() {
+            const confettiContainer = document.createElement('div');
+            confettiContainer.style.position = 'absolute';
+            confettiContainer.style.pointerEvents = 'none';
+            confettiContainer.style.width = '100vw';
+            confettiContainer.style.height = '100vh';
+            confettiContainer.style.overflow = 'hidden';
+            document.body.appendChild(confettiContainer);
+
+            for (let i = 0; i < 150; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'absolute';
+                confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                confetti.style.width = `${Math.random() * 10 + 5}px`;
+                confetti.style.height = `${Math.random() * 10 + 5}px`;
+                confetti.style.top = `${Math.random() * 100}%`;
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.opacity = Math.random();
+                confetti.style.animation = `fall ${Math.random() * 3 + 2}s ease-in-out infinite, spin ${Math.random() * 2 + 1}s linear infinite`;
+                confettiContainer.appendChild(confetti);
+            }
+
+            // Remove confetti after 5 seconds
+            setTimeout(() => {
+                confettiContainer.remove();
+            }, 5000);
+        }
+
+        // Trigger confetti effect randomly
+        setInterval(createConfetti, 7000);
+    </script>
 </body>
 </html>
